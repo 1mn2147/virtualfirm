@@ -1,0 +1,78 @@
+x-firmware-mvp-build: &firmware-mvp-build
+  context: .
+  target: dev
+
+services:
+  firmware-mvp:
+    build: *firmware-mvp-build
+    working_dir: /app
+    read_only: true
+    tmpfs:
+      - /tmp
+    volumes:
+      - .:/app:ro
+      - firmware-mvp-runs:/output
+    environment:
+      PYTHONPATH: /app/src
+    command: firmware-mvp --help
+
+  sample:
+    build: *firmware-mvp-build
+    working_dir: /app
+    read_only: true
+    tmpfs:
+      - /tmp
+    volumes:
+      - .:/app:ro
+      - firmware-mvp-runs:/output
+    environment:
+      PYTHONPATH: /app/src
+    command: >
+      firmware-mvp analyze samples/demo_firmware.bin
+      --device stm32f1
+      --out /output/docker-demo
+
+  test:
+    build: *firmware-mvp-build
+    working_dir: /app
+    read_only: true
+    tmpfs:
+      - /tmp
+    volumes:
+      - .:/app:ro
+    environment:
+      PYTHONPATH: /app/src
+    command: pytest -q -p no:cacheprovider
+
+  shell:
+    build: *firmware-mvp-build
+    working_dir: /app
+    read_only: true
+    tmpfs:
+      - /tmp
+    volumes:
+      - .:/app:ro
+      - firmware-mvp-runs:/output
+    environment:
+      PYTHONPATH: /app/src
+    entrypoint: /bin/bash
+
+  integration-test:
+    build:
+      <<: *firmware-mvp-build
+      args:
+        INSTALL_QEMU: "1"
+        INSTALL_QILING: "1"
+    working_dir: /app
+    read_only: true
+    tmpfs:
+      - /tmp
+    volumes:
+      - .:/app:ro
+    environment:
+      PYTHONPATH: /app/src
+      RUN_DOCKER_INTEGRATION: "1"
+    command: pytest -q -m docker_integration -p no:cacheprovider
+
+volumes:
+  firmware-mvp-runs:

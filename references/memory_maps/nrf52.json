@@ -1,0 +1,13 @@
+{
+  "schema_version": "0.1",
+  "device": "nrf52",
+  "aliases": ["nrf52", "nrf52832", "nrf52840"],
+  "source": "references/memory_maps/nrf52.json",
+  "ranges": [
+    {"name": "CLOCK", "type": "RCC", "start": "0x40000000", "end": "0x40000FFF", "default_read": "0x00000000", "description": "Clock control registers"},
+    {"name": "UART0", "type": "UART", "start": "0x40002000", "end": "0x40002FFF", "default_read": "0x00000020", "description": "UART0 peripheral registers"},
+    {"name": "SPI0", "type": "SPI", "start": "0x40003000", "end": "0x40003FFF", "default_read": "0x00000000", "description": "SPI0 peripheral registers"},
+    {"name": "GPIO", "type": "GPIO", "start": "0x50000000", "end": "0x50000FFF", "default_read": "0x00000000", "description": "GPIO peripheral registers"},
+    {"name": "CORTEX_M_SYSTEM_CONTROL", "type": "CORE_SYSTEM", "start": "0xE000E000", "end": "0xE000EFFF", "default_read": "0x00000000", "description": "Cortex-M system control space"}
+  ]
+}

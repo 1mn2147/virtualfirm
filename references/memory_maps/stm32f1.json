@@ -1,0 +1,112 @@
+{
+  "schema_version": "0.1",
+  "device": "stm32f1",
+  "aliases": ["stm32f1", "stm32f103", "stm32f101", "stm32f105", "stm32f107"],
+  "source": "references/stm32f1_memory_map.md",
+  "ranges": [
+    {
+      "name": "TIM2",
+      "type": "TIMER",
+      "start": "0x40000000",
+      "end": "0x400003FF",
+      "default_read": "0x00000000",
+      "description": "General purpose timer 2"
+    },
+    {
+      "name": "TIM3_TIM4",
+      "type": "TIMER",
+      "start": "0x40000400",
+      "end": "0x40000BFF",
+      "default_read": "0x00000000",
+      "description": "General purpose timer 3 and 4 region"
+    },
+    {
+      "name": "SPI2_I2S2",
+      "type": "SPI",
+      "start": "0x40003800",
+      "end": "0x40003BFF",
+      "default_read": "0x00000000",
+      "description": "SPI2/I2S2 peripheral registers"
+    },
+    {
+      "name": "USART2",
+      "type": "UART",
+      "start": "0x40004400",
+      "end": "0x400047FF",
+      "default_read": "0x00000020",
+      "description": "USART2 peripheral registers"
+    },
+    {
+      "name": "USART3",
+      "type": "UART",
+      "start": "0x40004800",
+      "end": "0x40004BFF",
+      "default_read": "0x00000020",
+      "description": "USART3 peripheral registers"
+    },
+    {
+      "name": "I2C1",
+      "type": "I2C",
+      "start": "0x40005400",
+      "end": "0x400057FF",
+      "default_read": "0x00000000",
+      "description": "I2C1 peripheral registers"
+    },
+    {
+      "name": "I2C2",
+      "type": "I2C",
+      "start": "0x40005800",
+      "end": "0x40005BFF",
+      "default_read": "0x00000000",
+      "description": "I2C2 peripheral registers"
+    },
+    {
+      "name": "GPIOA",
+      "type": "GPIO",
+      "start": "0x40010800",
+      "end": "0x40010BFF",
+      "default_read": "0x00000000",
+      "description": "GPIO port A registers"
+    },
+    {
+      "name": "GPIOB",
+      "type": "GPIO",
+      "start": "0x40010C00",
+      "end": "0x40010FFF",
+      "default_read": "0x00000000",
+      "description": "GPIO port B registers"
+    },
+    {
+      "name": "USART1",
+      "type": "UART",
+      "start": "0x40011000",
+      "end": "0x400113FF",
+      "default_read": "0x00000020",
+      "description": "USART1 peripheral registers"
+    },
+    {
+      "name": "SPI1",
+      "type": "SPI",
+      "start": "0x40013000",
+      "end": "0x400133FF",
+      "default_read": "0x00000000",
+      "description": "SPI1 peripheral registers"
+    },
+    {
+      "name": "RCC",
+      "type": "RCC",
+      "start": "0x40021000",
+      "end": "0x400213FF",
+      "default_read": "0x00000000",
+      "description": "Reset and clock control registers"
+    },
+    {
+      "name": "CORTEX_M_SYSTEM_CONTROL",
+      "type": "CORE_SYSTEM",
+      "start": "0xE000E000",
+      "end": "0xE000EFFF",
+      "default_read": "0x00000000",
+      "description": "Cortex-M system control space"
+    }
+  ]
+}

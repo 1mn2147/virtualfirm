@@ -1,0 +1,12 @@
+{
+  "schema_version": "0.1",
+  "device": "esp32",
+  "aliases": ["esp32", "esp32-wroom", "xtensa"],
+  "source": "references/memory_maps/esp32.json",
+  "ranges": [
+    {"name": "UART0", "type": "UART", "start": "0x3FF40000", "end": "0x3FF40FFF", "default_read": "0x00000020", "description": "UART0 peripheral registers"},
+    {"name": "SPI1", "type": "SPI", "start": "0x3FF42000", "end": "0x3FF42FFF", "default_read": "0x00000000", "description": "SPI1 peripheral registers"},
+    {"name": "GPIO", "type": "GPIO", "start": "0x3FF44000", "end": "0x3FF44FFF", "default_read": "0x00000000", "description": "GPIO peripheral registers"},
+    {"name": "TIMER_GROUP0", "type": "TIMER", "start": "0x3FF5F000", "end": "0x3FF5FFFF", "default_read": "0x00000000", "description": "Timer group 0 registers"}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": "0.1",
+  "device": "stm32f4",
+  "aliases": ["stm32f4", "stm32f401", "stm32f407", "stm32f429"],
+  "source": "references/memory_maps/stm32f4.json",
+  "ranges": [
+    {"name": "USART2", "type": "UART", "start": "0x40004400", "end": "0x400047FF", "default_read": "0x00000020", "description": "USART2 peripheral registers"},
+    {"name": "I2C1", "type": "I2C", "start": "0x40005400", "end": "0x400057FF", "default_read": "0x00000000", "description": "I2C1 peripheral registers"},
+    {"name": "GPIOA", "type": "GPIO", "start": "0x40020000", "end": "0x400203FF", "default_read": "0x00000000", "description": "GPIO port A registers"},
+    {"name": "RCC", "type": "RCC", "start": "0x40023800", "end": "0x40023BFF", "default_read": "0x00000000", "description": "Reset and clock control registers"},
+    {"name": "CORTEX_M_SYSTEM_CONTROL", "type": "CORE_SYSTEM", "start": "0xE000E000", "end": "0xE000EFFF", "default_read": "0x00000000", "description": "Cortex-M system control space"}
+  ]
+}

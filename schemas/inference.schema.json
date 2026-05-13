@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InferenceResult",
+  "type": "object",
+  "required": ["schema_version", "device", "findings", "rag_hits", "assumptions"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "device": { "type": "string" },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["mmio_address", "type", "action", "value", "confidence", "evidence"],
+        "properties": {
+          "mmio_address": { "type": "string" },
+          "type": { "type": "string" },
+          "action": { "type": "string" },
+          "value": { "type": "string" },
+          "confidence": { "type": "number" },
+          "evidence": { "type": "array", "items": { "type": "string" } },
+          "peripheral_name": { "type": ["string", "null"] },
+          "reference_range": { "type": ["string", "null"] },
+          "reference_source": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "rag_hits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source", "score", "excerpt"],
+        "properties": {
+          "source": { "type": "string" },
+          "score": { "type": "integer" },
+          "excerpt": { "type": "string" },
+          "kind": { "type": "string" },
+          "source_location": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "assumptions": { "type": "array", "items": { "type": "string" } }
+  }
+}

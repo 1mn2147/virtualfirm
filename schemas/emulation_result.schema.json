@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EmulationResult",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "backend",
+    "device",
+    "status",
+    "stop_reason",
+    "instruction_count",
+    "instruction_limit",
+    "mapped_regions",
+    "crash",
+    "uart_output",
+    "semihosting",
+    "exit_condition",
+    "success",
+    "success_criteria"
+  ],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "backend": { "type": "string" },
+    "device": { "type": "string" },
+    "status": { "type": "string" },
+    "stop_reason": { "type": "string" },
+    "instruction_count": { "type": "integer" },
+    "instruction_limit": { "type": "integer" },
+    "mapped_regions": { "type": "integer" },
+    "crash": { "type": ["object", "null"] },
+    "uart_output": { "type": "array" },
+    "semihosting": { "type": "array" },
+    "exit_condition": { "type": "object" },
+    "success": { "type": "boolean" },
+    "success_criteria": { "type": "array" }
+  }
+}

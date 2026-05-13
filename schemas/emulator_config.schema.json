@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EmulatorConfig",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "device",
+    "engine",
+    "firmware",
+    "qiling",
+    "mappings",
+    "feedback_schema",
+    "llm_feedback_prompt_template",
+    "raw_findings"
+  ],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "device": { "type": "string" },
+    "engine": { "type": "string" },
+    "firmware": {
+      "type": "object",
+      "required": ["path", "entry_point", "architecture_hint"],
+      "properties": {
+        "path": { "type": ["string", "null"] },
+        "entry_point": { "type": ["string", "null"] },
+        "architecture_hint": { "type": ["string", "null"] }
+      }
+    },
+    "qiling": {
+      "type": "object",
+      "properties": {
+        "rootfs": { "type": ["string", "null"] },
+        "load_address": { "type": ["string", "null"] }
+      }
+    },
+    "mappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["base", "size", "type", "default_read", "on_write", "source_mmio"],
+        "properties": {
+          "base": { "type": "string" },
+          "size": { "type": "string" },
+          "type": { "type": "string" },
+          "default_read": { "type": "string" },
+          "on_write": { "type": "string" },
+          "source_mmio": { "type": "string" }
+        }
+      }
+    },
+    "feedback_schema": { "type": "object" },
+    "llm_feedback_prompt_template": { "type": "string" },
+    "raw_findings": { "type": "array" }
+  }
+}

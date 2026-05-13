@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FirmwareContext",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "path",
+    "size_bytes",
+    "sha256",
+    "entropy",
+    "architecture_hint",
+    "encrypted_or_compressed_likely",
+    "entry_point",
+    "strings",
+    "mmio_addresses",
+    "tool_observations"
+  ],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "path": { "type": "string" },
+    "size_bytes": { "type": "integer" },
+    "sha256": { "type": "string" },
+    "input_format": { "type": "string" },
+    "loaded_base_address": { "type": ["string", "null"] },
+    "loaded_size_bytes": { "type": ["integer", "null"] },
+    "loaded_ranges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "start": { "type": "string" },
+          "end": { "type": "string" },
+          "size_bytes": { "type": "integer" },
+          "source": { "type": "string" }
+        }
+      }
+    },
+    "vector_table": {
+      "type": ["object", "null"],
+      "properties": {
+        "architecture": { "type": "string" },
+        "base_address": { "type": "string" },
+        "initial_sp": { "type": "string" },
+        "vector_count": { "type": "integer" },
+        "reset_handler": { "type": "object" },
+        "vectors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "index": { "type": "integer" },
+              "name": { "type": "string" },
+              "table_address": { "type": "string" },
+              "raw_value": { "type": "string" },
+              "enabled": { "type": "boolean" },
+              "handler_address": { "type": "string" },
+              "thumb_bit": { "type": "boolean" },
+              "initial_sp": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "entropy_windows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "offset": { "type": "integer" },
+          "hex_offset": { "type": "string" },
+          "size_bytes": { "type": "integer" },
+          "entropy": { "type": ["number", "null"] },
+          "high_entropy": { "type": "boolean" },
+          "truncated": { "type": "boolean" }
+        }
+      }
+    },
+    "compressed_or_encrypted_ranges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "offset": { "type": "integer" },
+          "hex_offset": { "type": "string" },
+          "end_offset": { "type": "integer" },
+          "hex_end_offset": { "type": "string" },
+          "kind": { "type": "string" },
+          "entropy": { "type": ["number", "null"] },
+          "reason": { "type": "string" },
+          "source": { "type": "string" }
+        }
+      }
+    },
+    "string_ranges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "offset": { "type": "integer" },
+          "hex_offset": { "type": "string" },
+          "end_offset": { "type": "integer" },
+          "hex_end_offset": { "type": "string" },
+          "size_bytes": { "type": "integer" },
+          "preview": { "type": "string" }
+        }
+      }
+    },
+    "entropy": { "type": "number" },
+    "architecture_hint": { "type": "string" },
+    "encrypted_or_compressed_likely": { "type": "boolean" },
+    "entry_point": { "type": ["string", "null"] },
+    "strings": { "type": "array", "items": { "type": "string" } },
+    "mmio_addresses": { "type": "array", "items": { "type": "string" } },
+    "firmware_segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["offset", "hex_offset", "description", "kind"],
+        "properties": {
+          "offset": { "type": "integer" },
+          "hex_offset": { "type": "string" },
+          "description": { "type": "string" },
+          "kind": { "type": "string" },
+          "size_bytes": { "type": "integer" },
+          "end_offset": { "type": "integer" }
+        }
+      }
+    },
+    "embedded_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "relative_path", "size_bytes", "kind", "file_type"],
+        "properties": {
+          "path": { "type": "string" },
+          "relative_path": { "type": "string" },
+          "size_bytes": { "type": "integer" },
+          "kind": { "type": "string" },
+          "file_type": { "type": "string" },
+          "score": { "type": "integer" },
+          "score_reasons": { "type": "array", "items": { "type": "string" } },
+          "source_segment": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "vulnerability_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["category", "risk", "evidence"],
+        "properties": {
+          "category": { "type": "string" },
+          "risk": { "type": "string" },
+          "function": { "type": ["string", "null"] },
+          "address": { "type": ["string", "null"] },
+          "symbol": { "type": ["string", "null"] },
+          "evidence": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "function_contexts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "entry_point", "reasons"],
+        "properties": {
+          "name": { "type": "string" },
+          "entry_point": { "type": ["string", "null"] },
+          "candidate_categories": { "type": "array", "items": { "type": "string" } },
+          "candidate_risks": { "type": "array", "items": { "type": "string" } },
+          "candidate_count": { "type": "integer" },
+          "review_priority": { "type": "string" },
+          "flow_signals": { "type": "array", "items": { "type": "string" } },
+          "evidence_snippets": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "signal": { "type": "string" },
+                "line": { "type": "integer" },
+                "text": { "type": "string" }
+              }
+            }
+          },
+          "reasons": { "type": "array", "items": { "type": "string" } },
+          "disassembly": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "address": { "type": "string" },
+                "text": { "type": "string" }
+              }
+            }
+          },
+          "decompiled": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "analysis_warnings": { "type": "array", "items": { "type": "string" } },
+    "tool_observations": { "type": "object" }
+  }
+}

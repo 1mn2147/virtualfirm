@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LoopSummary",
+  "type": "object",
+  "required": ["schema_version", "backend", "status", "stop_reason", "iterations", "final_config"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "backend": { "type": "string" },
+    "status": { "type": "string" },
+    "stop_reason": { "type": "string" },
+    "iterations": { "type": "array" },
+    "final_config": { "type": "string" }
+  }
+}
