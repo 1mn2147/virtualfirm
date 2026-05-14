@@ -1,6 +1,6 @@
-# Firmware Analysis MVP
+# VirtualFirm - 펌웨어 자동 분석 및 가상화 툴
 
-Firmware Analysis MVP는 펌웨어 파일에서 정적 컨텍스트를 추출하고, MMIO/주변기기 매핑을 추론하며, 에뮬레이션 설정과 실행 결과를 재현 가능한 JSON 산출물로 남기는 로컬 분석 도구입니다.
+VirtualFirm은 펌웨어 파일에서 정적 컨텍스트를 추출하고, MMIO/주변기기 매핑을 추론하며, 에뮬레이션 설정과 실행 결과를 재현 가능한 JSON 산출물로 남기는 로컬 분석 도구입니다.
 
 기본 경로는 네트워크와 상용 도구 없이 동작합니다. `binwalk`, Ghidra, IDA, Qiling, OpenAI, `pdftotext`는 설치되어 있을 때만 선택적으로 사용됩니다.
 
